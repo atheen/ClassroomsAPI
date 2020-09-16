@@ -1,11 +1,12 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from classes.models import Classroom,Student
+from classes.models import Classroom, Student
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
         fields = ['username', 'password']
@@ -20,6 +21,18 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
 
 class ClassroomSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Classroom
-		fields = ['subject','name','year','teacher']
+    class Meta:
+        model = Classroom
+        fields = ['subject', 'name', 'year', 'teacher']
+
+
+class ClassroomDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Classroom
+        fields = "__all__"
+
+
+class CreateUpdateClassroomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Classroom
+        fields = ["name", "year", "subject"]

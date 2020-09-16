@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
@@ -21,9 +20,15 @@ urlpatterns = [
 
     path('login/', TokenObtainPairView.as_view(), name='api-login'),
     path('register/', APIviews.UserCreateAPIView.as_view(), name='api-register'),
-
+    path('api/classrooms/', APIviews.ClassroomListView.as_view(), name='api-classroom-list'),
+    path('api/classrooms/<int:classroom_id>/', APIviews.ClassroomDetailsView.as_view(), name='api-classroom-detail'),
+    path('api/classrooms/create/', APIviews.ClassroomCreateView.as_view(), name='api-classroom-create'),
+    path('api/classrooms/<int:classroom_id>/update/', APIviews.ClassroomUpdateView.as_view(), name='api-classroom'
+                                                                                                   '-update'),
+    path('api/classrooms/<int:classroom_id>/delete/', APIviews.ClassroomDeleteView.as_view(), name='api-classroom'
+                                                                                                   '-delete'),
 ]
 
 if settings.DEBUG:
-	urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-	urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
