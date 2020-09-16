@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from .classes.models import Classroom,Student
+from classes.models import Classroom,Student
 
 
 class UserCreateSerializer(serializers.ModelSerializer):

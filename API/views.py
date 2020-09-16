@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .serializers import UserCreateSerializer
+from .serializers import UserCreateSerializer,ClassroomSerializer
 from rest_framework.generics import CreateAPIView, ListAPIView
-from .classes.models import Classroom,Student
+from classes.models import Classroom,Student
 
 class UserCreateAPIView(CreateAPIView):
     serializer_class = UserCreateSerializer
@@ -9,4 +9,4 @@ class UserCreateAPIView(CreateAPIView):
 
 class ClassroomListView(ListAPIView):
     queryset = Classroom.objects.all()
-    serializer_class = ListSerializer
+    serializer_class = ClassroomSerializer
